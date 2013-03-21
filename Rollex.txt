@@ -16,7 +16,7 @@ $macros["Rollex"]={
 		},1000);
 		return [];
 	}};
-macros["Rollex"].exec();
+$macros["Rollex"].exec();
 
 // Coordinates System :
 SetCoords(512,286,40);
