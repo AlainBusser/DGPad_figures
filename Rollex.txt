@@ -1,0 +1,45 @@
+// Macros :
+$macros={};
+$macros["Rollex"]={
+  name:"Rollex",
+	parameters:["point"],
+	exec:
+	function (){
+		window.setInterval(function(){	
+			var d=new Date();
+			var h=d.getHours()/24*4*Math.PI;
+			var m=d.getMinutes()/60*2*Math.PI;
+			var s=d.getSeconds()/60*2*Math.PI;
+			Move("Ph",Math.sin(h),Math.cos(h));
+			Move("Pm",2*Math.sin(m),2*Math.cos(m));
+			Move("Ps",3*Math.sin(s),2*Math.cos(s));
+		},1000);
+		return [];
+	}};
+macros["Rollex"].exec();
+
+// Coordinates System :
+SetCoords(512,286,40);
+
+// Geometry :
+ox=X_axis("ox");
+oy=Y_axis("oy");
+Ph=Point("Ph",1.275,1.5);
+Pm=Point("Pm",1.025,2.65);
+Ps=Point("Ps",0.675,3.825);
+P1=OrderedIntersection("P1",ox,oy,0);
+S1=Segment("S1",P1,Ph);
+S2=Segment("S2",P1,Pm);
+S3=Segment("S3",P1,Ps);
+
+
+// Styles :
+STL(Ph,"c:#0000b2;h:1;s:6;f:30");
+STL(Pm,"c:#0000b2;h:1;s:6;f:30");
+STL(Ps,"c:#0000b2;h:1;s:6;f:30");
+STL(P1,"c:#010114;o:1;s:6;f:30");
+STL(S1,"c:#b40000;s:6.5;f:24");
+STL(S2,"c:#0000b2;s:3.5;f:24");
+STL(S3,"c:#006633;s:1;f:24");
+SetCoordsStyle("isAxis:false;isGrid:true;isOx:true;isOy:true;isLockOx:false;isLockOy:false;color:#111111;fontSize:18;axisWidth:1;gridWidth:0.1");
+
