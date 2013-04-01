@@ -1,0 +1,86 @@
+// Macros :
+$macros={};
+$macros.Inverse1pt={
+  name:"Inverse 1pt",
+	parameters:["circle","point"],
+	exec:
+	function (C1,A){
+O=Center("O",C1);
+L1=Line("L1",O,A);
+Perp1=Perpendicular("Perp1",L1,O);
+P2=OrderedIntersection("P2",L1,C1,0);
+P1=OrderedIntersection("P1",Perp1,C1,0);
+S1=Segment("S1",A,P1);
+S2=Segment("S2",P1,P2);
+Par1=Parallel("Par1",S1,P2);
+P3=OrderedIntersection("P3",Perp1,Par1,0);
+Par2=Parallel("Par2",S2,P3);
+P4=OrderedIntersection("P4",L1,Par2,0);
+return [P4];
+}};
+
+// Coordinates System :
+SetCoords(320,240,10);
+
+
+// Geometry :
+P1=Point("P1",-12,9.1);
+P2=Point("P2",-9.9,19.6);
+P3=Point("P3",12.2,5);
+P4=Point("P4",14,12.2);
+C1=Circle("C1",P1,P2);
+C2=Circle("C2",P3,P4);
+L1=Line("L1",P1,P3);
+L11=Line("L11",P3,P1);
+Perp1=Perpendicular("Perp1",L1,P1);
+P21=OrderedIntersection("P21",L1,C1,0);
+Perp11=Perpendicular("Perp11",L11,P3);
+P22=OrderedIntersection("P22",L11,C2,0);
+P11=OrderedIntersection("P11",Perp1,C1,0);
+P12=OrderedIntersection("P12",Perp11,C2,0);
+S1=Segment("S1",P3,P11);
+S2=Segment("S2",P11,P21);
+S11=Segment("S11",P1,P12);
+S21=Segment("S21",P12,P22);
+Par1=Parallel("Par1",S1,P21);
+Par11=Parallel("Par11",S11,P22);
+P31=OrderedIntersection("P31",Perp1,Par1,0);
+P32=OrderedIntersection("P32",Perp11,Par11,0);
+Par2=Parallel("Par2",S2,P31);
+Par21=Parallel("Par21",S21,P32);
+P41=OrderedIntersection("P41",L1,Par2,0);
+P42=OrderedIntersection("P42",L11,Par21,0);
+M1=MidPoint("M1",P42,P41);
+Perp2=Perpendicular("Perp2",L1,M1);
+
+
+// Styles :
+STL(P1,"c:#0000b2;s:6;f:30");
+STL(P2,"c:#0000b2;s:6;f:30");
+STL(P3,"c:#0000b2;s:6;f:30");
+STL(P4,"c:#0000b2;s:6;f:30");
+STL(C1,"c:#0000b2;o:0.19;s:1;f:30;p:0");
+STL(C2,"c:#007c7c;o:0.13;s:1;f:30");
+STL(L1,"c:#780013;h:1;s:1;f:30;p:0");
+STL(L11,"c:#780013;h:1;s:1;f:30;p:0");
+STL(Perp1,"c:#780013;h:1;s:1;f:30;p:0");
+STL(P21,"c:#0000b2;h:1;s:6;f:30");
+STL(Perp11,"c:#780013;h:1;s:1;f:30;p:0");
+STL(P22,"c:#0000b2;h:1;s:6;f:30");
+STL(P11,"c:#0000b2;h:1;s:6;f:30");
+STL(P12,"c:#0000b2;h:1;s:6;f:30");
+STL(S1,"c:#006633;h:1;s:1;f:24");
+STL(S2,"c:#006633;h:1;s:1;f:24");
+STL(S11,"c:#006633;h:1;s:1;f:24");
+STL(S21,"c:#006633;h:1;s:1;f:24");
+STL(Par1,"c:#780013;h:1;s:1;f:30;p:0");
+STL(Par11,"c:#780013;h:1;s:1;f:30;p:0");
+STL(P31,"c:#0000b2;h:1;s:6;f:30");
+STL(P32,"c:#0000b2;h:1;s:6;f:30");
+STL(Par2,"c:#780013;h:1;s:1;f:30;p:0");
+STL(Par21,"c:#780013;h:1;s:1;f:30;p:0");
+STL(P41,"c:#0000b2;h:1;s:6;f:30");
+STL(P42,"c:#0000b2;h:1;s:6;f:30");
+STL(M1,"c:#0000b2;h:1;s:6;f:30");
+STL(Perp2,"c:#b40000;s:2;f:30;p:0");
+SetCoordsStyle("isAxis:false;isGrid:true;isOx:true;isOy:true;isLockOx:false;isLockOy:false;color:#111111;fontSize:18;axisWidth:1;gridWidth:0.1");
